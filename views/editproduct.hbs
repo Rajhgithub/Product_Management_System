@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+  {{> header}}
+
+  <body>
+
+    {{> navbar}}
+    
+    <div class="container">
+      <div class="text">Edit Product Details</div>
+      
+      {{#if msg}}
+        <p class="{{msg_type}}">{{msg}}</p>
+        {{/if}}
+      
+      {{#each rows}}
+      <form method="post" action="/editproduct/{{this.ID}}">
+        <div class="data">
+          <label for="productName">Product Name</label>
+          <input type="text" name="productName" id="productName" value="{{this.ProductName}}" />
+        </div>
+        <div class="data">
+          <label for="price">Price</label>
+          <input type="text" name="price" id="price" value="{{this.Price}}" />
+        </div>
+        <div class="data">
+          <label for="quantity">Quantity</label>
+          <input type="text" name="quantity" id="quantity" value="{{this.Quantity}}" />
+        </div>
+        <div class="btn">
+          <button type="submit">Save Changes</button>
+        </div>
+        <div class="btn">
+          <a href="/home">
+          <button type="button">View all</button>
+          </a>
+        </div>
+      </form>
+      {{/each}}
+    </div>
+  </body>
+</html>
